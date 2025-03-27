@@ -1,0 +1,11 @@
+<h1>Ajouter un film à la liste "<%= @list.name %>"</h1>
+
+<%= simple_form_for @bookmark, url: list_bookmarks_path(@list) do |f| %>
+  <div class="form-group">
+    <%= f.input :movie_id, collection: @movies, label_method: :title, value_method: :id, include_blank: false, label: "Sélectionnez un film", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Ajouter le film", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'Retour à la liste', @list %>
