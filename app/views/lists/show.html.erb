@@ -1,0 +1,7 @@
+<h1><%= @list.name %></h1>
+
+<% if @list.photo.attached? %>
+  <%= image_tag @list.photo, class: "img-fluid", alt: @list.name %>
+<% end %>
+
+<%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary mt-3" %>

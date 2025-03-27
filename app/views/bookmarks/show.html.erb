@@ -1,0 +1,6 @@
+<% @list.bookmarks.each do |bookmark| %>
+  <li>
+    <%= bookmark.movie.title %> -
+    <%= link_to 'Supprimer', bookmark_path(bookmark), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce signet ?' } %>
+  </li>
+<% end %>

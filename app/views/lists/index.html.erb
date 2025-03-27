@@ -1,0 +1,24 @@
+<div class="container my-3">
+
+ <h1>Mes Listes</h1>
+
+<%= link_to "Créer une nouvelle liste", new_list_path, class: "btn btn-primary mb-3" %>
+
+<div class="row">
+  <% @lists.each do |list| %>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <% if list.photo.attached? %>
+          <%= image_tag list.photo, class: "card-img-top", alt: list.name %>
+        <% else %>
+          <%= image_tag "visuel-cinema.jpg", class: "card-img-top", alt: "Image par défaut" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <%= link_to "Voir la liste", list_path(list), class: "btn btn-outline-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
