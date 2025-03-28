@@ -12,6 +12,7 @@ class ListsController < ApplicationController
      @bookmark = Bookmark.new
    end
 
+
    def new
     @list = List.new
    end

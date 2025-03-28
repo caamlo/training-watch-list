@@ -9,13 +9,12 @@ class BookmarksController < ApplicationController
 
   def create
     @list = current_user.lists.find(params[:list_id])
-    @Movie = Movie.find(params[:bookmark][:movie_id])  # Récupère le film choisi
-    @bookmark = Bookmark.new(list: @list, movie: @movie)
-
+    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.list = @list
     if @bookmark.save
-      redirect_to @list, notice: "Film ajouté à la liste."
+      redirect_to list_path(@list), notice: "Film ajouté à la liste."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -24,4 +23,10 @@ class BookmarksController < ApplicationController
     @bookmark.destroy
     redirect_to @bookmark.list, notice: "Signet supprimé."
   end
+
+  private
+  def bookmark_params
+    params.require(:bookmark).permit(:comment, :movie_id)
+  end
+
 end
