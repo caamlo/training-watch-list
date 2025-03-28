@@ -104,6 +104,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.1)
     execjs (2.10.0)
@@ -297,6 +301,7 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   debug
   devise
+  dotenv-rails
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
