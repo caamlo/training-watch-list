@@ -1,7 +1,20 @@
 <h1><%= @list.name %></h1>
 
-<% if @list.photo.attached? %>
-  <%= image_tag @list.photo, class: "img-fluid", alt: @list.name %>
+<h2>Films dans cette liste :</h2>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li>
+      <strong><%= bookmark.movie.title %></strong>
+      <em>(<%= bookmark.comment %>)</em>
+      <%= link_to "Supprimer", bookmark_path(bookmark), method: :delete, data: { confirm: "Es-tu sûr ?" }, class: "btn btn-danger btn-sm" %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Ajouter un film à cette liste :</h2>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie, collection: Movie.all, prompt: "Choisissez un film" %>
+  <%= f.submit "Ajouter", class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary mt-3" %>
+<%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary" %>
