@@ -25,4 +25,3 @@ class BookmarksController < ApplicationController
     redirect_to @bookmark.list, notice: "Signet supprimé."
   end
 end
-end
