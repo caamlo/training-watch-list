@@ -8,7 +8,9 @@ class ListsController < ApplicationController
 
    def show
      @list = current_user.lists.find(params[:id])
-   end
+     @bookmarks = @list.bookmarks
+     @bookmark = Bookmark.new
+    end
 
    def new
     @list = List.new
